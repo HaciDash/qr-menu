@@ -1,24 +1,76 @@
-# build output
-dist/
-
-# generated types
-.astro/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules/
+/node_modules
+/.pnp
+.pnp.js
 
-# logs
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-# environment variables
+# local env files
 .env
+.env*.local
+.env.development
 .env.production
 
-# macOS-specific files
-.DS_Store
+# vercel
+.vercel
 
-# jetbrains setting folder
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.vscode/
 .idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation (geliştirme dokümanları)
+ADMIN_PANEL_COMPLETE.md
+CHECKLIST.md
+CODE_SHOWCASE.md
+DESIGN_GUIDE.md
+DESIGN_UPDATE.md
+FINAL_COMPLETE.md
+IMPLEMENTATION.md
+LOCATION_CONTACT.md
+LOCATION_CONTACT_COMPLETE.md
+MENU_ENGINE.md
+MENU_ENGINE_COMPLETE.md
+MENU_ENGINE_VISUAL.md
+MINIMALIST_COMPLETE.md
+PRODUCTION_COMPLETE.md
+PRODUCTION_GUIDE.md
+PROJECT_STRUCTURE.md
+SCROLLSPY_ENGINE.md
+SUMMARY.md
+
+# Old Astro files (temizlik)
+*.astro
+
+# Temporary files
+*.tmp
+*.temp

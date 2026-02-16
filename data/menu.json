@@ -1,0 +1,224 @@
+{
+  "categories": [
+    {
+      "id": "kebaplar",
+      "name": "Kebaplar",
+      "slug": "kebaplar"
+    },
+    {
+      "id": "firinda",
+      "name": "Fırından Lezzetler",
+      "slug": "firinda-lezzetler"
+    },
+    {
+      "id": "ara-sicaklar",
+      "name": "Ara Sıcaklar",
+      "slug": "ara-sicaklar"
+    },
+    {
+      "id": "icecekler",
+      "name": "İçecekler",
+      "slug": "icecekler"
+    },
+    {
+      "id": "tatlilar",
+      "name": "Tatlılar",
+      "slug": "tatlilar"
+    }
+  ],
+  "items": [
+    {
+      "id": "1",
+      "name": "Adana Kebap",
+      "description": "Geleneksel el yapımı zırh kıyma ile hazırlanmış",
+      "price": 320,
+      "image": "https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=400&h=400&fit=crop",
+      "tags": [
+        "Acılı",
+        "Popüler"
+      ],
+      "category": "kebaplar",
+      "available": true
+    },
+    {
+      "id": "2",
+      "name": "Urfa Kebap",
+      "description": "Acısız, yumuşak dokulu el yapımı kebap",
+      "price": 310,
+      "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&h=400&fit=crop",
+      "tags": [
+        "Acısız"
+      ],
+      "category": "kebaplar",
+      "available": true
+    },
+    {
+      "id": "3",
+      "name": "Karışık Izgara",
+      "description": "Adana, Urfa, köfte ve tavuk şiş bir arada",
+      "price": 380,
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400&h=400&fit=crop",
+      "tags": [
+        "Popüler",
+        "Karma"
+      ],
+      "category": "kebaplar",
+      "available": true
+    },
+    {
+      "id": "4",
+      "name": "Patlıcanlı Kebap",
+      "description": "Közlenmiş patlıcan ile servis edilen kebap",
+      "price": 340,
+      "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&h=400&fit=crop",
+      "tags": [
+        "Özel"
+      ],
+      "category": "firinda",
+      "available": true
+    },
+    {
+      "id": "5",
+      "name": "Kuşbaşı Güveç",
+      "description": "Fırında pişmiş kuşbaşı et güveç",
+      "price": 290,
+      "image": "https://images.unsplash.com/photo-1574484284002-952d92456975?w=400&h=400&fit=crop",
+      "tags": [
+        "Sıcak"
+      ],
+      "category": "firinda",
+      "available": true
+    },
+    {
+      "id": "6",
+      "name": "Tepsi Kebabı",
+      "description": "Patlıcan, domates ve biber ile fırında kebap",
+      "price": 350,
+      "image": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=400&fit=crop",
+      "tags": [
+        "Özel"
+      ],
+      "category": "firinda",
+      "available": true
+    },
+    {
+      "id": "7",
+      "name": "Mercimek Çorbası",
+      "description": "Geleneksel Türk mercimek çorbası",
+      "price": 40,
+      "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=400&fit=crop",
+      "tags": [
+        "Sıcak"
+      ],
+      "category": "ara-sicaklar",
+      "available": true
+    },
+    {
+      "id": "8",
+      "name": "Çoban Salata",
+      "description": "Taze domates, salatalık, biber ve soğan",
+      "price": 50,
+      "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=400&fit=crop",
+      "tags": [
+        "Taze"
+      ],
+      "category": "ara-sicaklar",
+      "available": true
+    },
+    {
+      "id": "9",
+      "name": "Ezme",
+      "description": "Acılı ezme salata",
+      "price": 45,
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop",
+      "tags": [
+        "Acılı"
+      ],
+      "category": "ara-sicaklar",
+      "available": true
+    },
+    {
+      "id": "10",
+      "name": "Ayran",
+      "description": "Ev yapımı taze ayran",
+      "price": 20,
+      "image": "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400&h=400&fit=crop",
+      "tags": [
+        "Taze"
+      ],
+      "category": "icecekler",
+      "available": true
+    },
+    {
+      "id": "11",
+      "name": "Şalgam",
+      "description": "Acılı veya acısız şalgam suyu",
+      "price": 25,
+      "image": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=400&h=400&fit=crop",
+      "tags": [
+        "Geleneksel"
+      ],
+      "category": "icecekler",
+      "available": true
+    },
+    {
+      "id": "12",
+      "name": "Kola",
+      "description": "Soğuk kola",
+      "price": 30,
+      "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=400&h=400&fit=crop",
+      "tags": [],
+      "category": "icecekler",
+      "available": true
+    },
+    {
+      "id": "13",
+      "name": "Künefe",
+      "description": "Sıcak künefe, fıstık ile",
+      "price": 120,
+      "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=400&fit=crop",
+      "tags": [
+        "Sıcak",
+        "Popüler"
+      ],
+      "category": "tatlilar",
+      "available": true
+    },
+    {
+      "id": "14",
+      "name": "Sütlaç",
+      "description": "Fırında sütlaç",
+      "price": 70,
+      "image": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&h=400&fit=crop",
+      "tags": [
+        "Soğuk"
+      ],
+      "category": "tatlilar",
+      "available": true
+    },
+    {
+      "id": "15",
+      "name": "Baklava",
+      "description": "Antep fıstıklı baklava",
+      "price": 90,
+      "image": "https://images.unsplash.com/photo-1519676867240-f03562e64548?w=400&h=400&fit=crop",
+      "tags": [
+        "Özel"
+      ],
+      "category": "tatlilar",
+      "available": true
+    },
+    {
+      "id": "item-1771159605828",
+      "name": "Kuşbaşı",
+      "description": "mevsim salata",
+      "price": 500,
+      "image": "/menu-images/placeholder.jpg",
+      "tags": [
+        "kuzu eti"
+      ],
+      "category": "kebaplar",
+      "available": true
+    }
+  ]
+}
