@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   return (
-    <header className="w-full bg-midnight py-6 sticky top-0 z-40 backdrop-blur-md bg-midnight/95 border-b border-ember/10">
+    <header className="w-full bg-midnight py-6">
       <div className="container mx-auto px-4 md:max-w-md">
-        {/* Center Aligned Header - Compact & Modern */}
+        {/* Center Aligned Header - Scrolls Away */}
         <motion.div 
           className="flex flex-col items-center justify-center gap-3"
           initial={{ opacity: 0, y: -20 }}

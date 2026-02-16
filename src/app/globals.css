@@ -14,9 +14,19 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Smooth scrolling */
+  /* Smooth scrolling - Daha yavaş ve akıcı */
   html {
     scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  
+  * {
+    scroll-padding-top: 100px;
   }
 
   /* Remove default margins */

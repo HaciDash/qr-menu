@@ -22,12 +22,12 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
     return acc;
   }, {} as { [key: string]: MenuItem[] });
 
-  // IntersectionObserver for Scrollspy
+  // IntersectionObserver for Scrollspy - Daha yumuşak geçişler
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: "-10% 0px -80% 0px",
-      threshold: 0.1,
+      rootMargin: "-15% 0px -75% 0px", // Daha geniş alan = daha az sık değişim
+      threshold: 0.15, // Daha yüksek threshold = daha az hassas
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -73,18 +73,38 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
     }
   };
 
-  // Smooth scroll to category
+  // Smooth scroll to category - Daha yavaş ve akıcı
   const scrollToCategory = (categoryId: string) => {
     const element = categoryRefs.current[categoryId];
     if (element) {
-      const headerOffset = 70;
+      const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+      // Smooth scroll with custom duration
+      const start = window.pageYOffset;
+      const distance = offsetPosition - start;
+      const duration = 800; // 800ms = daha yavaş (önceki instant'tı)
+      let startTime: number | null = null;
+
+      const easeInOutCubic = (t: number): number => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      const animation = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const ease = easeInOutCubic(progress);
+        
+        window.scrollTo(0, start + distance * ease);
+        
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
+
+      requestAnimationFrame(animation);
       setActiveCategory(categoryId);
       scrollCategoryButtonIntoView(categoryId);
     }
@@ -93,7 +113,7 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
   return (
     <div className="w-full">
       {/* Sticky Category Navigation - Modern Pills */}
-      <div className="sticky top-[180px] z-40 bg-midnight/95 backdrop-blur-md py-4 border-b border-ember/10">
+      <div className="sticky top-0 z-40 bg-midnight/95 backdrop-blur-md py-4 border-b border-ember/10">
         <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar">
           <div className="flex gap-2 px-4 min-w-max">
             {categories.map((category) => {
@@ -136,7 +156,7 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
                 categoryRefs.current[category.id] = el;
               }}
               data-category={category.id}
-              className="scroll-mt-[70px]"
+              className="scroll-mt-[80px]"
             >
               {/* Category Title */}
               <motion.h2
@@ -157,13 +177,13 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
                     key={item.id}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-30px" }}
-                    transition={{ delay: index * 0.05 }}
-                    whileHover={{ scale: 1.01 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: index * 0.08, duration: 0.4 }}
+                    whileHover={{ scale: 1.015, y: -2 }}
                     className="flex flex-row items-center gap-4 
                                bg-[#18181B] rounded-xl border border-[#FF6600]
                                hover:border-[#FF8033] hover:shadow-lg hover:shadow-ember/10
-                               transition-all duration-200 p-3"
+                               transition-all duration-300 p-3"
                   >
                     {/* Image - Left (90x90px - Biraz büyütüldü) */}
                     <div className="relative w-[90px] h-[90px] flex-shrink-0 rounded-xl overflow-hidden ring-2 ring-ember/20">
