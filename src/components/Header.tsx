@@ -14,9 +14,9 @@ export default function Header() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Logo - 130px */}
+          {/* Logo - 169px (%30 büyütüldü) */}
           <motion.div 
-            className="relative w-[130px] aspect-square"
+            className="relative w-[169px] aspect-square"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -26,15 +26,35 @@ export default function Header() {
               fill
               className="object-contain"
               priority
+              style={{ fontWeight: 500 }}
             />
           </motion.div>
 
-          {/* Slogan - Modern & Clean */}
+          {/* Slogan - Büyütülmüş + Turuncu Neon Animasyon */}
           <motion.p 
-            className="text-gray-300 text-base font-bold tracking-widest uppercase"
+            className="text-gray-300 text-xl font-black tracking-[0.3em] uppercase"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
+            animate={{ 
+              opacity: 1,
+              textShadow: [
+                "0 0 10px rgba(255, 102, 0, 0.3), 0 0 20px rgba(255, 102, 0, 0.2)",
+                "0 0 20px rgba(255, 102, 0, 0.5), 0 0 30px rgba(255, 102, 0, 0.3)",
+                "0 0 10px rgba(255, 102, 0, 0.3), 0 0 20px rgba(255, 102, 0, 0.2)",
+              ]
+            }}
+            transition={{ 
+              delay: 0.2, 
+              duration: 0.5,
+              textShadow: {
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }
+            }}
+            style={{
+              color: "#FF6600",
+              textShadow: "0 0 20px rgba(255, 102, 0, 0.5), 0 0 30px rgba(255, 102, 0, 0.3)"
+            }}
           >
             Et | Köz | Lezzet
           </motion.p>

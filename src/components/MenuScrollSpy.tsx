@@ -112,9 +112,13 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
 
   return (
     <div className="w-full">
-      {/* Sticky Category Navigation - Modern Pills */}
+      {/* Sticky Category Navigation - Touch Optimized */}
       <div className="sticky top-0 z-40 bg-midnight/95 backdrop-blur-md py-4 border-b border-ember/10">
-        <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar">
+        <div 
+          ref={scrollContainerRef} 
+          className="overflow-x-auto overflow-y-hidden custom-scrollbar"
+          style={{ touchAction: "pan-x" }}
+        >
           <div className="flex gap-2 px-4 min-w-max">
             {categories.map((category) => {
               const isActive = activeCategory === category.id;

@@ -38,6 +38,12 @@ interface NewItemForm {
   tags: string;
 }
 
+interface NewCategoryForm {
+  id: string;
+  name: string;
+  slug: string;
+}
+
 export default function AdminPage() {
   const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -47,6 +53,7 @@ export default function AdminPage() {
   const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
+  const [showAddCategoryForm, setShowAddCategoryForm] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [editingImageId, setEditingImageId] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -57,6 +64,11 @@ export default function AdminPage() {
     price: 0,
     image: "",
     tags: "",
+  });
+  const [newCategoryForm, setNewCategoryForm] = useState<NewCategoryForm>({
+    id: "",
+    name: "",
+    slug: "",
   });
 
   useEffect(() => {
@@ -221,6 +233,30 @@ export default function AdminPage() {
 
     setShowAddForm(false);
     setMessage("✅ Yeni ürün eklendi! Kaydetmeyi unutmayın.");
+    setTimeout(() => setMessage(""), 3000);
+  };
+
+  const addNewCategory = () => {
+    if (!menuData) return;
+    if (!newCategoryForm.name || !newCategoryForm.id) {
+      alert("Lütfen kategori adı ve ID girin!");
+      return;
+    }
+
+    const newCategory: MenuCategory = {
+      id: newCategoryForm.id,
+      name: newCategoryForm.name,
+      slug: newCategoryForm.slug || newCategoryForm.id,
+    };
+
+    setMenuData({
+      ...menuData,
+      categories: [...menuData.categories, newCategory],
+    });
+
+    setShowAddCategoryForm(false);
+    setNewCategoryForm({ id: "", name: "", slug: "" });
+    setMessage("✅ Yeni kategori eklendi! Kaydetmeyi unutmayın.");
     setTimeout(() => setMessage(""), 3000);
   };
 
@@ -402,7 +438,7 @@ export default function AdminPage() {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 mb-6">
+        <div className="flex gap-3 mb-6 flex-wrap">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -413,6 +449,14 @@ export default function AdminPage() {
             <Save className="w-5 h-5" />
             {loading ? "Kaydediliyor..." : "Değişiklikleri Kaydet"}
           </motion.button>
+
+          <button
+            onClick={() => setShowAddCategoryForm(true)}
+            className="flex items-center gap-2 px-6 py-3 bg-green-500/10 border border-green-500/30 text-green-400 rounded-lg hover:bg-green-500/20 transition-colors"
+          >
+            <Plus className="w-5 h-5" />
+            Yeni Kategori
+          </button>
 
           <button
             onClick={() => router.push("/")}
@@ -447,6 +491,94 @@ export default function AdminPage() {
             e.target.value = ""; // Reset input
           }}
         />
+
+        {/* Add Item Modal */}
+        <AnimatePresence>
+          {showAddCategoryForm && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+              onClick={() => setShowAddCategoryForm(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.9, y: 20 }}
+                onClick={(e) => e.stopPropagation()}
+                className="bg-midnight-surface border border-green-500/30 rounded-2xl p-6 w-full max-w-lg"
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-xl font-bold text-white">Yeni Kategori Ekle</h3>
+                  <button
+                    onClick={() => setShowAddCategoryForm(false)}
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
+
+                <div className="space-y-4">
+                  {/* Kategori Adı */}
+                  <div>
+                    <label className="block text-sm text-gray-400 mb-2">Kategori Adı *</label>
+                    <input
+                      type="text"
+                      value={newCategoryForm.name}
+                      onChange={(e) => {
+                        const name = e.target.value;
+                        const id = name.toLowerCase()
+                          .replace(/ı/g, 'i')
+                          .replace(/ğ/g, 'g')
+                          .replace(/ü/g, 'u')
+                          .replace(/ş/g, 's')
+                          .replace(/ö/g, 'o')
+                          .replace(/ç/g, 'c')
+                          .replace(/\s+/g, '-');
+                        setNewCategoryForm({ 
+                          ...newCategoryForm, 
+                          name,
+                          id,
+                          slug: id
+                        });
+                      }}
+                      placeholder="Çorbalar"
+                      className="w-full px-4 py-2 bg-midnight border border-green-500/30 rounded-lg text-white focus:outline-none focus:border-green-500"
+                    />
+                  </div>
+
+                  {/* ID (Otomatik) */}
+                  <div>
+                    <label className="block text-sm text-gray-400 mb-2">ID (Otomatik)</label>
+                    <input
+                      type="text"
+                      value={newCategoryForm.id}
+                      readOnly
+                      className="w-full px-4 py-2 bg-midnight/50 border border-ember/20 rounded-lg text-gray-500 text-sm"
+                      placeholder="corbalar"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex gap-3 mt-6">
+                  <button
+                    onClick={addNewCategory}
+                    className="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors"
+                  >
+                    Kategori Ekle
+                  </button>
+                  <button
+                    onClick={() => setShowAddCategoryForm(false)}
+                    className="px-6 bg-midnight-surface border border-ember/30 text-gray-300 rounded-lg hover:border-ember/50 transition-colors"
+                  >
+                    İptal
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Add Item Modal */}
         <AnimatePresence>
