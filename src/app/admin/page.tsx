@@ -247,6 +247,7 @@ export default function AdminPage() {
       id: newCategoryForm.id,
       name: newCategoryForm.name,
       slug: newCategoryForm.slug || newCategoryForm.id,
+      order: menuData.categories.length + 1, // Otomatik sıra numarası
     };
 
     setMenuData({
