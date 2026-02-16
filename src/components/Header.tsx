@@ -5,18 +5,18 @@ import { motion } from "framer-motion";
 
 export default function Header() {
   return (
-    <header className="w-full bg-midnight py-3">
+    <header className="w-full bg-midnight py-6 sticky top-0 z-40 backdrop-blur-md bg-midnight/95 border-b border-ember/10">
       <div className="container mx-auto px-4 md:max-w-md">
-        {/* Center Aligned Header - Optimized */}
+        {/* Center Aligned Header - Compact & Modern */}
         <motion.div 
-          className="flex flex-col items-center justify-center gap-1"
+          className="flex flex-col items-center justify-center gap-3"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Logo - 150px */}
+          {/* Logo - 130px */}
           <motion.div 
-            className="relative w-[150px] aspect-square"
+            className="relative w-[130px] aspect-square"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -29,9 +29,9 @@ export default function Header() {
             />
           </motion.div>
 
-          {/* Slogan - Büyütüldü */}
+          {/* Slogan - Modern & Clean */}
           <motion.p 
-            className="text-gray-400 text-base font-semibold tracking-wider uppercase -mt-2"
+            className="text-gray-300 text-base font-bold tracking-widest uppercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}

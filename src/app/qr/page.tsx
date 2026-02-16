@@ -43,13 +43,8 @@ export default function QRCodePage() {
 
   return (
     <div className="min-h-screen bg-midnight py-12 px-4">
-      <div className="container mx-auto max-w-2xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
-        >
+      <div className="container mx-auto px-4 md:max-w-md">
+        <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">
             QR Kod Menü
           </h1>
@@ -57,9 +52,9 @@ export default function QRCodePage() {
             Haşim Usta Kebap - Dijital Menü
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            Müşterileriniz bu QR kodu okutarak menüye ulaşabilir
+            Müşterileriniz bu QR kodu okutarak menüye erişir
           </p>
-        </motion.div>
+        </div>
 
         {/* QR Code Display */}
         <motion.div

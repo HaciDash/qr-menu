@@ -92,10 +92,10 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
 
   return (
     <div className="w-full">
-      {/* Sticky Category Navigation - Button Style */}
-      <div className="sticky top-0 z-50 bg-[#0F0F0F] py-4 border-b border-ember/20 backdrop-blur-md">
+      {/* Sticky Category Navigation - Modern Pills */}
+      <div className="sticky top-[180px] z-40 bg-midnight/95 backdrop-blur-md py-4 border-b border-ember/10">
         <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar">
-          <div className="flex gap-3 px-4 min-w-max">
+          <div className="flex gap-2 px-4 min-w-max">
             {categories.map((category) => {
               const isActive = activeCategory === category.id;
               return (
@@ -106,16 +106,15 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
                   }}
                   onClick={() => scrollToCategory(category.id)}
                   className={`
-                    px-6 py-3 text-sm font-bold whitespace-nowrap rounded-full
+                    px-5 py-2.5 text-sm font-bold whitespace-nowrap rounded-full
                     transition-all duration-300 border-2
                     ${
                       isActive
-                        ? "bg-ember text-white border-ember shadow-lg shadow-ember/30"
-                        : "bg-midnight-surface text-gray-400 border-ember/30 hover:border-ember/50 hover:text-gray-200"
+                        ? "bg-ember text-white border-ember shadow-lg shadow-ember/30 scale-105"
+                        : "bg-midnight-surface/50 text-gray-400 border-ember/20 hover:border-ember/50 hover:text-gray-200 hover:bg-midnight-surface"
                     }
                   `}
                   whileTap={{ scale: 0.95 }}
-                  whileHover={{ scale: isActive ? 1 : 1.02 }}
                 >
                   {category.name}
                 </motion.button>
@@ -166,14 +165,14 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
                                hover:border-[#FF8033] hover:shadow-lg hover:shadow-ember/10
                                transition-all duration-200 p-3"
                   >
-                    {/* Image - Left (80x80px) */}
-                    <div className="relative w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    {/* Image - Left (90x90px - Biraz büyütüldü) */}
+                    <div className="relative w-[90px] h-[90px] flex-shrink-0 rounded-xl overflow-hidden ring-2 ring-ember/20">
                       <Image
                         src={item.image}
                         alt={`${item.name} - ${item.description}`}
                         fill
                         className="object-cover"
-                        sizes="80px"
+                        sizes="90px"
                         loading="lazy"
                       />
                     </div>
@@ -182,10 +181,10 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
                     <div className="flex-1 min-w-0 flex flex-col justify-between">
                       {/* Title & Description */}
                       <div>
-                        <h3 className="text-base font-bold text-white mb-0.5 truncate">
+                        <h3 className="text-base font-bold text-white mb-1 truncate">
                           {item.name}
                         </h3>
-                        <p className="text-xs text-gray-400 line-clamp-1 leading-relaxed">
+                        <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-2">
                           {item.description}
                         </p>
                       </div>
@@ -207,9 +206,11 @@ export default function MenuScrollSpy({ categories, items }: MenuScrollSpyProps)
 
                     {/* Price - Right Aligned */}
                     <div className="flex-shrink-0">
-                      <span className="text-base font-bold text-[#FF6600] whitespace-nowrap">
-                        {formatPrice(item.price)}
-                      </span>
+                      <div className="bg-ember/10 px-4 py-2 rounded-full border-2 border-ember/30">
+                        <span className="text-lg font-black text-ember whitespace-nowrap">
+                          {formatPrice(item.price)}
+                        </span>
+                      </div>
                     </div>
                   </motion.div>
                 ))}
